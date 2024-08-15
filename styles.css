@@ -1,0 +1,30 @@
+
+#calculator {
+    display: flex;
+    flex-direction: column; 
+    width: 200px;
+    height: 400px;
+    align-self: center;
+}
+
+#display {
+    border: black 2px solid;
+    flex-basis: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+#keypad {
+    flex-basis: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1;
+}
+
+#keypad button {
+    flex-basis: 25%;
+}
+
+#keypad #evaluate {
+    flex-basis: 50%;
+}
