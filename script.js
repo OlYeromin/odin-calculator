@@ -3,7 +3,16 @@ let secondNumber = []; // i.e. you cannot change them unlike an array.
 let operator;
 
 function appendNumeral(numeralAppended, number) {
-    number.push(Number(numeralAppended)); 
+    if (numeralAppended === "0" && !number.length) return;
+    if (numeralAppended === ".") {
+        if (!number.length) {
+            number.push("0");
+            number.push(".");
+            return;
+        }
+        else if (number.includes(".")) return;
+    }
+    number.push(numeralAppended);
 }
 
 const numeralButtons = document.querySelectorAll(".numeral");
