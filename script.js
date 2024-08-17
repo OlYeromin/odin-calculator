@@ -1,8 +1,13 @@
-let firstNumber;
-let secondNumber;
+let firstNumber = "";
+let secondNumber = "";
 let operator;
 
-const numeralButtons = document.querySelectorAll("#numeral");
+function appendNumeral(numeralAppended, number) {
+    number.concat(numeralAppended); 
+    console.log(number);
+}
+
+const numeralButtons = document.querySelectorAll(".numeral");
 numeralButtons.forEach((numeralButton) => {
     numeralButton.addEventListener("click", () => {
         const numeral = numeralButton.textContent;
