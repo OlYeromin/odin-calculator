@@ -41,4 +41,25 @@ numeralButtons.forEach((numeralButton) => {
     })
 })
 
+const operatorButtons = document.querySelectorAll(".operator");
+operatorButtons.forEach((operatorButton) => {
+    operatorButton.addEventListener("click", () => {
+        if (!firstNumber.length) {
+            console.log(operator);
+            return
+        };
+        if (!operator || !secondNumber.length) {
+            operator = operatorButton.id;
+            console.log(operator);
+            return;
+        };
+        if (secondNumber.length) {
+            evaluate();
+            operator = operatorButton.id;
+            console.log(operator);
+            return;
+        }; 
+    })
+})
+
 console.log(numeralsToNumber(["1","2","3",".","5","6"]))
