@@ -19,6 +19,19 @@ function numeralsToNumber(numeralsArray) {
         return Number(numeralsArray.join(""));
 }
 
+function evaluate() {
+    switch(operator) {
+        case "add":
+            return firstNumber + secondNumber;
+        case "subtract":
+            return firstNumber - secondNumber;
+        case "multiply":
+            return firstNumber * secondNumber;
+        case "divide":
+            return firstNumber / secondNumber;
+    }
+}
+
 const numeralButtons = document.querySelectorAll(".numeral");
 numeralButtons.forEach((numeralButton) => {
     numeralButton.addEventListener("click", () => {
