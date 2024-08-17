@@ -15,6 +15,10 @@ function appendNumeral(numeralAppended, number) {
     number.push(numeralAppended);
 }
 
+function numeralsToNumber(numeralsArray) {
+        return Number(numeralsArray.join(""));
+}
+
 const numeralButtons = document.querySelectorAll(".numeral");
 numeralButtons.forEach((numeralButton) => {
     numeralButton.addEventListener("click", () => {
@@ -23,3 +27,5 @@ numeralButtons.forEach((numeralButton) => {
             else appendNumeral(numeral, secondNumber);
     })
 })
+
+console.log(numeralsToNumber(["1","2","3",".","5","6"]))
