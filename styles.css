@@ -24,6 +24,14 @@ body {
     flex-direction: column;
 }
 
+#history {
+    flex-basis: 80%;
+}
+
+#output {
+    flex-basis: 20%;
+}
+
 #keypad {
     flex-basis: 50%;
     display: flex;
