@@ -20,15 +20,19 @@ function numeralsToNumber(numeralsArray) {
 }
 
 function evaluate() {
+    let num1 = numeralsToNumber(firstNumber);
+    let num2 = numeralsToNumber(secondNumber);
+    firstNumber = [];
+    secondNumber = [];
     switch(operator) {
         case "add":
-            return firstNumber + secondNumber;
+            return num1 + num2;
         case "subtract":
-            return firstNumber - secondNumber;
+            return num1 - num2;
         case "multiply":
-            return firstNumber * secondNumber;
+            return num1 * num2;
         case "divide":
-            return firstNumber / secondNumber;
+            return num1 / num2;
     }
 }
 
@@ -54,7 +58,7 @@ operatorButtons.forEach((operatorButton) => {
             return;
         };
         if (secondNumber.length) {
-            evaluate();
+            firstNumber = evaluate();
             operator = operatorButton.id;
             console.log(operator);
             return;
@@ -62,4 +66,4 @@ operatorButtons.forEach((operatorButton) => {
     })
 })
 
-console.log(numeralsToNumber(["1","2","3",".","5","6"]))
+//console.log(numeralsToNumber(["1","2","3",".","5","6"]))
