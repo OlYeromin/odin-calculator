@@ -42,18 +42,20 @@ numeralButtons.forEach((numeralButton) => {
         const numeral = numeralButton.textContent;
         if (!operator) appendNumeral(numeral, firstNumber)
             else appendNumeral(numeral, secondNumber);
+        appendToOutput(numeral);
     })
 })
 
 const operatorButtons = document.querySelectorAll(".operator");
 operatorButtons.forEach((operatorButton) => {
     operatorButton.addEventListener("click", () => {
-        if (!firstNumber.length) {
+        if (!firstNumber.length) {              // if the first number is empty
             console.log(operator);
             return
         };
-        if (!operator || !secondNumber.length) {
+        if (!operator || !secondNumber.length) {// if the operator or the second number is empty
             operator = operatorButton.id;
+            appendToOutput(operatorButton.textContent);
             console.log(operator);
             return;
         };
@@ -65,5 +67,9 @@ operatorButtons.forEach((operatorButton) => {
         }; 
     })
 })
+function appendToOutput(character) {
+    output = document.querySelector("#output");
+    output.textContent += character;
+}
 
 //console.log(numeralsToNumber(["1","2","3",".","5","6"]))
