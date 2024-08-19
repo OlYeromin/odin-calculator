@@ -78,7 +78,8 @@ operatorButtons.forEach((operatorButton) => {
 
 const backSpace = document.querySelector("#correct");
 backSpace.addEventListener("click", () => {
-    updateExpression(current);
+    //updateExpression(current);
+    deleteLastChar();
 })
 
 //console.log(numeralsToNumber(["1","2","3",".","5","6"]))
