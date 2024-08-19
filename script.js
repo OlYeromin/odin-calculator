@@ -61,10 +61,7 @@ numeralButtons.forEach((numeralButton) => {
 const operatorButtons = document.querySelectorAll(".operator");
 operatorButtons.forEach((operatorButton) => {
     operatorButton.addEventListener("click", () => {
-        if (!firstNumber.length) {              // if the first number is empty
-            console.log(operator);
-            return
-        };
+        if (!firstNumber.length) return          // if the first number is empty
 
         // break the clause below into to separate clauses
         // (!operator) and (!secondNumber.length).
@@ -75,13 +72,11 @@ operatorButtons.forEach((operatorButton) => {
         if (!operator || !secondNumber.length) {// if the operator or the second number is empty
             operator = operatorButton.id;
             appendToOutput(operatorButton.textContent);
-            console.log(operator);
             return;
         };
         if (secondNumber.length) {
             firstNumber = evaluate();
             operator = operatorButton.id;
-            console.log(operator);
             return;
         }; 
     })
