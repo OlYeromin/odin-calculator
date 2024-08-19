@@ -63,22 +63,16 @@ operatorButtons.forEach((operatorButton) => {
     operatorButton.addEventListener("click", () => {
         if (!firstNumber.length) return          // if the first number is empty
 
-        // break the clause below into to separate clauses
-        // (!operator) and (!secondNumber.length).
-        // make the first replace the operator in the output
-
-        // also add the correct/clear function (you will need it here)
-
-        if (!operator || !secondNumber.length) {// if the operator or the second number is empty
-            operator = operatorButton.id;
-            appendToOutput(operatorButton.textContent);
-            return;
-        };
-        if (secondNumber.length) {
+        if (secondNumber.length) {               // if the second number is defined
             firstNumber = evaluate();
             operator = operatorButton.id;
             return;
-        }; 
+        };
+
+        if (operator) deleteLastChar();          // if operator is defined
+
+        operator = operatorButton.id;
+        appendToOutput(operatorButton.textContent);        
     })
 })
 
