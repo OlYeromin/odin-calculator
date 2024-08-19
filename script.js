@@ -53,6 +53,13 @@ operatorButtons.forEach((operatorButton) => {
             console.log(operator);
             return
         };
+
+        // break the clause below into to separate clauses
+        // (!operator) and (!secondNumber.length).
+        // make the first replace the operator in the output
+
+        // also add the correct/clear function (you will need it here)
+
         if (!operator || !secondNumber.length) {// if the operator or the second number is empty
             operator = operatorButton.id;
             appendToOutput(operatorButton.textContent);
