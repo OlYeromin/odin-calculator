@@ -5,7 +5,7 @@ let operator = [];
 let current = {
     address: "first",
     reference: firstNumber,
-    changeRefto: function (newAddress, newReference) {
+    shiftTo: function (newAddress, newReference) {
         this.address = newAddress;
         this.reference = newReference;
     }
@@ -61,8 +61,8 @@ const numeralButtons = document.querySelectorAll(".numeral");
 numeralButtons.forEach((numeralButton) => {
     numeralButton.addEventListener("click", () => {
         const numeral = numeralButton.textContent;
-        if (!operator.length) appendNumeral(numeral, firstNumber)
-            else appendNumeral(numeral, secondNumber);
+        if (current.address == "operator") current.shiftTo("second", secondNumber);
+        appendNumeral(numeral, current.reference);
         appendToOutput(numeral);
     })
 })
@@ -72,14 +72,15 @@ operatorButtons.forEach((operatorButton) => {
     operatorButton.addEventListener("click", () => {
         if (!firstNumber.length) return          // if the first number is empty
 
-        if (secondNumber.length) {               // if the second number is defined
+        if (current.address == "second") {
             firstNumber = evaluate();
+            secondNumber = [];
             operator[0] = operatorButton.id;
             return;
         };
 
-        if (operator.length) deleteLastChar();          // if operator is defined
-
+        if (current.address == "operator") deleteLastChar();
+        if (current.address == "first") current.shiftTo("operator", operator);
         operator[0] = operatorButton.id;
         appendToOutput(operatorButton.textContent);        
     })
