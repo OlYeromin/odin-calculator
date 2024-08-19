@@ -2,6 +2,7 @@ let firstNumber = [];  // I tried strings first but they are immutable,
 let secondNumber = []; // i.e. you cannot change them unlike an array.
 let operator = [];
 
+// Using "current address" feature allows for a straightforward "correct" function
 let current = {
     address: "first",
     reference: firstNumber,
@@ -47,6 +48,13 @@ function evaluate() {
     }
 }
 
+function correctExpression() {
+    current.reference.pop();
+    if (current.address == "operator") current.shiftTo("first", firstNumber);
+    if (current.address == "second" && !secondNumber.length) 
+        current.shiftTo("operator", operator);
+}
+
 function appendToOutput(character) {
     output.textContent += character;
 }
@@ -88,7 +96,7 @@ operatorButtons.forEach((operatorButton) => {
 
 const backSpace = document.querySelector("#correct");
 backSpace.addEventListener("click", () => {
-    updateExpression(current);
+    correctExpression(current);
     deleteLastChar();
 })
 
