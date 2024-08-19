@@ -41,6 +41,13 @@ function appendToOutput(character) {
     output.textContent += character;
 }
 
+function deleteLastChar() {
+    output = document.querySelector("#output");
+    string = output.textContent;
+    string = string.slice(0, string.length - 1);
+    output.textContent = string;
+}
+
 const numeralButtons = document.querySelectorAll(".numeral");
 numeralButtons.forEach((numeralButton) => {
     numeralButton.addEventListener("click", () => {
