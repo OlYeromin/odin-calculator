@@ -75,6 +75,14 @@ function deleteLastChar() {
     output.textContent = string;
 }
 
+function clearOutput() {
+    output.textContent = "";
+    firstNumber = [];
+    secondNumber = [];
+    operator = [];
+    current.shiftTo("first");
+}
+
 const numeralButtons = document.querySelectorAll(".numeral");
 numeralButtons.forEach((numeralButton) => {
     numeralButton.addEventListener("click", () => {
@@ -108,6 +116,11 @@ const backSpace = document.querySelector("#correct");
 backSpace.addEventListener("click", () => {
     correctExpression(current);
     deleteLastChar();
+})
+
+const allClear = document.querySelector("#all-clear");
+allClear.addEventListener("click", () => {
+   clearOutput(); 
 })
 
 //console.log(numeralsToNumber(["1","2","3",".","5","6"]))
