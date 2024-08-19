@@ -36,6 +36,11 @@ function evaluate() {
     }
 }
 
+function appendToOutput(character) {
+    output = document.querySelector("#output");
+    output.textContent += character;
+}
+
 const numeralButtons = document.querySelectorAll(".numeral");
 numeralButtons.forEach((numeralButton) => {
     numeralButton.addEventListener("click", () => {
@@ -74,9 +79,5 @@ operatorButtons.forEach((operatorButton) => {
         }; 
     })
 })
-function appendToOutput(character) {
-    output = document.querySelector("#output");
-    output.textContent += character;
-}
 
 //console.log(numeralsToNumber(["1","2","3",".","5","6"]))
