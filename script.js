@@ -2,6 +2,8 @@ let firstNumber = [];  // I tried strings first but they are immutable,
 let secondNumber = []; // i.e. you cannot change them unlike an array.
 let operator;
 
+const output = document.querySelector("#output");
+
 function appendNumeral(numeralAppended, number) {
     if (numeralAppended === "0" && !number.length) return;
     if (numeralAppended === ".") {
@@ -37,12 +39,10 @@ function evaluate() {
 }
 
 function appendToOutput(character) {
-    output = document.querySelector("#output");
     output.textContent += character;
 }
 
 function deleteLastChar() {
-    output = document.querySelector("#output");
     string = output.textContent;
     string = string.slice(0, string.length - 1);
     output.textContent = string;
