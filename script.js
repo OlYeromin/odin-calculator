@@ -6,9 +6,19 @@ let operator = [];
 let current = {
     address: "first",
     reference: firstNumber,
-    shiftTo: function (newAddress, newReference) {
+    shiftTo: function (newAddress) {
         this.address = newAddress;
-        this.reference = newReference;
+        switch (newAddress) {
+            case "first": 
+                this.reference = firstNumber;
+                return;
+            case "second":
+                this.reference = secondNumber;
+                return;
+            case "operator":
+                this.reference = operator;
+                return;
+        }
     }
 }
 
@@ -50,9 +60,9 @@ function evaluate() {
 
 function correctExpression() {
     current.reference.pop();
-    if (current.address == "operator") current.shiftTo("first", firstNumber);
+    if (current.address == "operator") current.shiftTo("first");
     if (current.address == "second" && !secondNumber.length) 
-        current.shiftTo("operator", operator);
+        current.shiftTo("operator");
 }
 
 function appendToOutput(character) {
@@ -69,7 +79,7 @@ const numeralButtons = document.querySelectorAll(".numeral");
 numeralButtons.forEach((numeralButton) => {
     numeralButton.addEventListener("click", () => {
         const numeral = numeralButton.textContent;
-        if (current.address == "operator") current.shiftTo("second", secondNumber);
+        if (current.address == "operator") current.shiftTo("second");
         appendNumeral(numeral, current.reference);
         appendToOutput(numeral);
     })
@@ -88,7 +98,7 @@ operatorButtons.forEach((operatorButton) => {
         };
 
         if (current.address == "operator") deleteLastChar();
-        if (current.address == "first") current.shiftTo("operator", operator);
+        if (current.address == "first") current.shiftTo("operator");
         operator[0] = operatorButton.id;
         appendToOutput(operatorButton.textContent);        
     })
