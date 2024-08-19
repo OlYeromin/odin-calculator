@@ -2,6 +2,15 @@ let firstNumber = [];  // I tried strings first but they are immutable,
 let secondNumber = []; // i.e. you cannot change them unlike an array.
 let operator = [];
 
+let current = {
+    address: "first",
+    reference: firstNumber,
+    changeRefto: function (newAddress, newReference) {
+        this.address = newAddress;
+        this.reference = newReference;
+    }
+}
+
 const output = document.querySelector("#output");
 
 function appendNumeral(numeralAppended, number) {
