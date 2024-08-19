@@ -52,7 +52,7 @@ const numeralButtons = document.querySelectorAll(".numeral");
 numeralButtons.forEach((numeralButton) => {
     numeralButton.addEventListener("click", () => {
         const numeral = numeralButton.textContent;
-        if (!operator) appendNumeral(numeral, firstNumber)
+        if (!operator.length) appendNumeral(numeral, firstNumber)
             else appendNumeral(numeral, secondNumber);
         appendToOutput(numeral);
     })
@@ -65,11 +65,11 @@ operatorButtons.forEach((operatorButton) => {
 
         if (secondNumber.length) {               // if the second number is defined
             firstNumber = evaluate();
-            operator = operatorButton.id;
+            operator[0] = operatorButton.id;
             return;
         };
 
-        if (operator) deleteLastChar();          // if operator is defined
+        if (operator.length) deleteLastChar();          // if operator is defined
 
         operator[0] = operatorButton.id;
         appendToOutput(operatorButton.textContent);        
