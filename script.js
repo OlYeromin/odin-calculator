@@ -1,6 +1,6 @@
 let firstNumber = [];  // I tried strings first but they are immutable,
 let secondNumber = []; // i.e. you cannot change them unlike an array.
-let operator;
+let operator = [];
 
 const output = document.querySelector("#output");
 
@@ -26,7 +26,7 @@ function evaluate() {
     let num2 = numeralsToNumber(secondNumber);
     firstNumber = [];
     secondNumber = [];
-    switch(operator) {
+    switch(operator[0]) {
         case "add":
             return num1 + num2;
         case "subtract":
@@ -71,7 +71,7 @@ operatorButtons.forEach((operatorButton) => {
 
         if (operator) deleteLastChar();          // if operator is defined
 
-        operator = operatorButton.id;
+        operator[0] = operatorButton.id;
         appendToOutput(operatorButton.textContent);        
     })
 })
