@@ -78,7 +78,7 @@ operatorButtons.forEach((operatorButton) => {
 
 const backSpace = document.querySelector("#correct");
 backSpace.addEventListener("click", () => {
-    //updateExpression(current);
+    updateExpression(current);
     deleteLastChar();
 })
 
