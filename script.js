@@ -47,13 +47,13 @@ function evaluateExpression() {
     let num2 = numeralsToNumber(secondNumber);
     switch(operator[0]) {
         case "add":
-            return (num1 + num2).toString.split("");
+            return (num1 + num2).toString().split("");
         case "subtract":
-            return (num1 - num2).toString.split("");
+            return (num1 - num2).toString().split("");
         case "multiply":
-            return (num1 * num2).toString.split("");
+            return (num1 * num2).toString().split("");
         case "divide":
-            return (num1 / num2).toString.split("");
+            return (num1 / num2).toString().split("");
     }
 }
 
