@@ -82,6 +82,10 @@ function clearOutput() {
     current.shiftTo("first");
 }
 
+function displayResult() {
+    output.textContent = result.join("");
+}
+
 const numeralButtons = document.querySelectorAll(".numeral");
 numeralButtons.forEach((numeralButton) => {
     numeralButton.addEventListener("click", () => {
