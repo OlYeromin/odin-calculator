@@ -130,4 +130,11 @@ allClear.addEventListener("click", () => {
    clearOutput(); 
 })
 
+const evaluateButton = document.querySelector("#evaluate");
+evaluateButton.addEventListener("click", () => {
+    result = evaluateExpression();
+    clearOutput();
+    displayResult();
+})
+
 //console.log(numeralsToNumber(["1","2","3",".","5","6"]))
