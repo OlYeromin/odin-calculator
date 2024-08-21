@@ -108,6 +108,7 @@ operatorButtons.forEach((operatorButton) => {
             firstNumber = result.slice();
             operator[0] = operatorButton.id;
             appendToOutput(operatorButton.textContent);
+            current.shiftTo("operator");
             return;
         };
 
