@@ -41,7 +41,7 @@ function numeralsToNumber(numeralsArray) {
         return Number(numeralsArray.join(""));
 }
 
-function evaluate() {
+function evaluateExpression() {
     let num1 = numeralsToNumber(firstNumber);
     let num2 = numeralsToNumber(secondNumber);
     firstNumber = [];
@@ -99,7 +99,7 @@ operatorButtons.forEach((operatorButton) => {
         if (!firstNumber.length) return          // if the first number is empty
 
         if (current.address == "second") {
-            firstNumber = evaluate();
+            firstNumber = evaluateExpression();
             operator[0] = operatorButton.id;
             return;
         };
