@@ -99,7 +99,7 @@ operatorButtons.forEach((operatorButton) => {
 
         if (current.address == "second") {
             firstNumber = evaluateExpression();
-            result = firstNumber;
+            result = firstNumber.slice();
             secondNumber = [];
             operator[0] = operatorButton.id;
             return;
