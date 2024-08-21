@@ -98,17 +98,19 @@ operatorButtons.forEach((operatorButton) => {
         if (!firstNumber.length) return          // if the first number is empty
 
         if (current.address == "second") {
-            firstNumber = evaluateExpression();
-            result = firstNumber.slice();
-            secondNumber = [];
+            result = evaluateExpression();
+            clearOutput();
+            displayResult();
+            firstNumber = result.slice();
             operator[0] = operatorButton.id;
+            appendToOutput(operatorButton.textContent);
             return;
         };
 
         if (current.address == "operator") deleteLastChar();
         if (current.address == "first") current.shiftTo("operator");
         operator[0] = operatorButton.id;
-        appendToOutput(operatorButton.textContent);        
+        appendToOutput(operatorButton.textContent);
     })
 })
 
