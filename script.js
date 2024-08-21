@@ -1,6 +1,7 @@
 let firstNumber = [];  // I tried strings first but they are immutable,
 let secondNumber = []; // i.e. you cannot change them unlike an array.
 let operator = [];
+let result = [];
 
 // Using "current address" feature allows for a straightforward "correct" function
 let current = {
@@ -44,17 +45,15 @@ function numeralsToNumber(numeralsArray) {
 function evaluateExpression() {
     let num1 = numeralsToNumber(firstNumber);
     let num2 = numeralsToNumber(secondNumber);
-    firstNumber = [];
-    secondNumber = [];
     switch(operator[0]) {
         case "add":
-            return num1 + num2;
+            return (num1 + num2).toString.split("");
         case "subtract":
-            return num1 - num2;
+            return (num1 - num2).toString.split("");
         case "multiply":
-            return num1 * num2;
+            return (num1 * num2).toString.split("");
         case "divide":
-            return num1 / num2;
+            return (num1 / num2).toString.split("");
     }
 }
 
@@ -100,6 +99,8 @@ operatorButtons.forEach((operatorButton) => {
 
         if (current.address == "second") {
             firstNumber = evaluateExpression();
+            result = firstNumber;
+            secondNumber = [];
             operator[0] = operatorButton.id;
             return;
         };
