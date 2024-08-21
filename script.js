@@ -100,7 +100,6 @@ operatorButtons.forEach((operatorButton) => {
 
         if (current.address == "second") {
             firstNumber = evaluate();
-            secondNumber = [];
             operator[0] = operatorButton.id;
             return;
         };
