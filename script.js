@@ -89,6 +89,10 @@ function displayResult() {
 const numeralButtons = document.querySelectorAll(".numeral");
 numeralButtons.forEach((numeralButton) => {
     numeralButton.addEventListener("click", () => {
+        if (result.length) {
+            clearOutput();
+            result = [];
+        };
         const numeral = numeralButton.textContent;
         if (current.address == "operator") current.shiftTo("second");
         appendNumeral(numeral, current.reference);
@@ -99,13 +103,12 @@ numeralButtons.forEach((numeralButton) => {
 const operatorButtons = document.querySelectorAll(".operator");
 operatorButtons.forEach((operatorButton) => {
     operatorButton.addEventListener("click", () => {
-        if (!firstNumber.length) return          // if the first number is empty
-
         if (current.address == "second") {
             result = evaluateExpression();
             clearOutput();
             displayResult();
             firstNumber = result.slice();
+            result = [];
             operator[0] = operatorButton.id;
             appendToOutput(operatorButton.textContent);
             current.shiftTo("operator");
@@ -113,7 +116,14 @@ operatorButtons.forEach((operatorButton) => {
         };
 
         if (current.address == "operator") deleteLastChar();
-        if (current.address == "first") current.shiftTo("operator");
+
+        if (current.address == "first") {
+            if (result.length) {
+                firstNumber = result.slice();   
+                result = [];
+            };
+            if (!firstNumber.length) return;        // if the first number is empty
+            current.shiftTo("operator")};
         operator[0] = operatorButton.id;
         appendToOutput(operatorButton.textContent);
     })
@@ -121,6 +131,11 @@ operatorButtons.forEach((operatorButton) => {
 
 const backSpace = document.querySelector("#correct");
 backSpace.addEventListener("click", () => {
+    if (result.length) {
+        firstNumber = result.slice();
+        current.reference = firstNumber;
+        result = [];
+    }
     correctExpression(current);
     deleteLastChar();
 })
