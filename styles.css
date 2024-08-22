@@ -19,13 +19,18 @@ body {
 
 #display {
     border: black 2px solid;
-    flex-basis: 50%;
+    height: 200px;
     display: flex;
     flex-direction: column;
 }
 
 #history {
     flex-basis: 80%;
+    flex-grow: 0;
+    display: block;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow-y: scroll;
 }
 
 #output {
