@@ -125,6 +125,8 @@ operatorButtons.forEach((operatorButton) => {
     operatorButton.addEventListener("click", () => {
         if (current.address == "second") {
             result = evaluateExpression();
+            createHistoryEntry();
+            outputUp("expression");
             clearOutput();
             displayResult();
             firstNumber = result.slice();
@@ -168,6 +170,8 @@ allClear.addEventListener("click", () => {
 const evaluateButton = document.querySelector("#evaluate");
 evaluateButton.addEventListener("click", () => {
     result = evaluateExpression();
+    createHistoryEntry();
+    outputUp("expression");
     clearOutput();
     displayResult();
 })
