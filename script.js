@@ -24,6 +24,7 @@ let current = {
 }
 
 const output = document.querySelector("#output");
+const history = document.querySelector("#history")
 
 function appendNumeral(numeralAppended, number) {
     if (numeralAppended === "0" && !number.length) return;
@@ -84,6 +85,13 @@ function clearOutput() {
 
 function displayResult() {
     output.textContent = result.join("");
+}
+
+function addDiv(content) {
+    const newdiv = document.createElement("div");
+    newdiv.textContent = content;
+    history.appendChild(newdiv);
+    newdiv.scrollIntoView();
 }
 
 const numeralButtons = document.querySelectorAll(".numeral");
