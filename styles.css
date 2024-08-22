@@ -25,12 +25,16 @@ body {
 }
 
 #history {
-    flex-basis: 80%;
-    flex-grow: 0;
-    display: block;
+    height: 160px;
+    display: flex;
     flex-direction: column;
-    justify-content: flex-end;
     overflow-y: scroll;
+}
+
+/* The selector below fixes the items in history to the bottom.
+   I found the solution here: https://stackoverflow.com/a/37515194 */
+#history > :first-child {
+    margin-top: auto !important;
 }
 
 #output {
