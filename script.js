@@ -87,11 +87,23 @@ function displayResult() {
     output.textContent = result.join("");
 }
 
-function addDiv(content) {
+function createHistoryEntry() {
     const newdiv = document.createElement("div");
-    newdiv.textContent = content;
     history.appendChild(newdiv);
     newdiv.scrollIntoView();
+}
+
+function outputUp(parameter) {
+    const outputContent = output.textContent;
+    const currentDiv = document.querySelector("#history > :last-child");
+    switch (parameter) {
+        case "expression": 
+            currentDiv.textContent = outputContent;
+            return;
+        case "result":
+            currentDiv.textContent += `=${currentDiv.textContent}`;
+            return;
+    }
 }
 
 const numeralButtons = document.querySelectorAll(".numeral");
@@ -161,3 +173,5 @@ evaluateButton.addEventListener("click", () => {
 })
 
 //console.log(numeralsToNumber(["1","2","3",".","5","6"]))
+
+//document.querySelector("#history > :last-child")
