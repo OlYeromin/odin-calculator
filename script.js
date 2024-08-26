@@ -175,7 +175,3 @@ evaluateButton.addEventListener("click", () => {
     clearOutput();
     displayResult();
 })
-
-//console.log(numeralsToNumber(["1","2","3",".","5","6"]))
-
-//document.querySelector("#history > :last-child")
