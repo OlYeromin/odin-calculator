@@ -108,11 +108,12 @@ function outputUp(parameter) {
 
 const keypad = document.querySelector("#keypad");
 keypad.addEventListener("click", (event) => {
+    console.log(event.target.className)
     if (result.length) {
         console.log("Keypad listener is fired!")
         if (event.target.id != "keypad") {
             outputUp("result");
-            if (event.target.class == "numeral") {
+            if (event.target.className == "numeral") {
                 if (current.address == "first") clearOutput();
                 else firstNumber = result.slice();
             }
