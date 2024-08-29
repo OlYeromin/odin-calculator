@@ -141,7 +141,7 @@ numeralButtons.forEach((numeralButton) => {
 
 const operatorButtons = document.querySelectorAll(".operator");
 operatorButtons.forEach((operatorButton) => {
-    operatorButton.addEventListener("click", (event) => {
+    operatorButton.addEventListener("click", () => {
         if (current.address == "second") {
             result = evaluateExpression();
             createHistoryEntry();
@@ -177,7 +177,7 @@ allClear.addEventListener("click", () => {
 })
 
 const evaluateButton = document.querySelector("#evaluate");
-evaluateButton.addEventListener("click", (event) => {
+evaluateButton.addEventListener("click", () => {
     if (secondNumber.length) {
         result = evaluateExpression();
         createHistoryEntry();
