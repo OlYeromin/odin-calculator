@@ -168,10 +168,12 @@ allClear.addEventListener("click", () => {
 })
 
 const evaluateButton = document.querySelector("#evaluate");
-evaluateButton.addEventListener("click", () => {
-    result = evaluateExpression();
-    createHistoryEntry();
-    outputUp("expression");
-    clearOutput();
-    displayResult();
+evaluateButton.addEventListener("click", (event) => {
+    if (secondNumber.length) {
+        result = evaluateExpression();
+        createHistoryEntry();
+        outputUp("expression");
+        clearOutput();
+        displayResult();
+    }
 })
