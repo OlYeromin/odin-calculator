@@ -144,7 +144,11 @@ operatorButtons.forEach((operatorButton) => {
     operatorButton.addEventListener("click", (event) => {
         console.log("Operator listener")
         if (current.address == "second") {
-            event.stopPropagation();
+            event.stopPropagation();            // If this line is skipped, the keypad eventlistener fires
+                                                // and the result is pushed to the output immediately,
+                                                // without emptying the "result" array. In this case, after
+                                                // another click upon any button on the keypad the result 
+                                                // is pushed up again and the output looks like "2 + 2 = 4 = 4"
             result = evaluateExpression();
             createHistoryEntry();
             outputUp("expression");
@@ -191,7 +195,7 @@ allClear.addEventListener("click", () => {
 const evaluateButton = document.querySelector("#evaluate");
 evaluateButton.addEventListener("click", (event) => {
     if (secondNumber.length) {
-        event.stopPropagation();
+        event.stopPropagation();                // See the rationale in the operatorButton eventlistener
         result = evaluateExpression();
         createHistoryEntry();
         outputUp("expression");
