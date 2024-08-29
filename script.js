@@ -126,10 +126,6 @@ keypad.addEventListener("click", (event) => {
 const numeralButtons = document.querySelectorAll(".numeral");
 numeralButtons.forEach((numeralButton) => {
     numeralButton.addEventListener("click", () => {
-        if (result.length) {
-            clearOutput();
-            result = [];
-        };
         const numeral = numeralButton.textContent;
         if (current.address == "operator") current.shiftTo("second");
         appendNumeral(numeral, current.reference);
@@ -161,10 +157,6 @@ operatorButtons.forEach((operatorButton) => {
         if (current.address == "operator") deleteLastChar();
 
         if (current.address == "first") {
-            if (result.length) {
-                firstNumber = result.slice();   
-                result = [];
-            };
             if (!firstNumber.length) return;        // if the first number is empty
             current.shiftTo("operator")};
         operator[0] = operatorButton.id;
@@ -174,11 +166,6 @@ operatorButtons.forEach((operatorButton) => {
 
 const backSpace = document.querySelector("#correct");
 backSpace.addEventListener("click", () => {
-    if (result.length) {
-        firstNumber = result.slice();
-        current.reference = firstNumber;
-        result = [];
-    }
     correctExpression(current);
     deleteLastChar();
 })
