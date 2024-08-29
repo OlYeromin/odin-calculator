@@ -101,7 +101,7 @@ function outputUp(parameter) {
             currentDiv.textContent = outputContent;
             return;
         case "result":
-            currentDiv.textContent += `=${outputContent}`;
+            currentDiv.textContent += `=${result.join("")}`;
             return;
     }
 }
