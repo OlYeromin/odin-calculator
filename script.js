@@ -106,6 +106,23 @@ function outputUp(parameter) {
     }
 }
 
+const keypad = document.querySelector("#keypad");
+keypad.addEventListener("click", (event) => {
+    /*
+    
+    result to top
+    is numeral clicked?
+        if yes, is the current number first?
+            then clear output
+        otherwise,
+            first number = slice.result()
+    is any other button except AC clicked?
+        if yes, first number = slice.result();
+    empty result
+    
+    */
+})
+
 const numeralButtons = document.querySelectorAll(".numeral");
 numeralButtons.forEach((numeralButton) => {
     numeralButton.addEventListener("click", () => {
