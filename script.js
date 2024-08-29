@@ -109,21 +109,18 @@ function outputUp(parameter) {
 const keypad = document.querySelector("#keypad");
 keypad.addEventListener("click", (event) => {
     if (result.length) {
-        
+        console.log("Keypad listener is fired!")
+        if (event.target.id != "keypad") {
+            outputUp("result");
+            if (event.target.class == "numeral") {
+                if (current.address == "first") clearOutput();
+                else firstNumber = result.slice();
+            }
+            else if (event.target.id != "all-clear")
+                firstNumber = result.slice();
+            result = [];
+        }
     }
-    /*
-    
-    result to top
-    is numeral clicked?
-        if yes, is the current number first?
-            then clear output
-        otherwise,
-            first number = slice.result()
-    is any other button except AC clicked?
-        if yes, first number = slice.result();
-    empty result
-    
-    */
 })
 
 const numeralButtons = document.querySelectorAll(".numeral");
@@ -155,7 +152,6 @@ operatorButtons.forEach((operatorButton) => {
             clearOutput();
             displayResult();
             firstNumber = result.slice();
-            //result = [];
             operator[0] = operatorButton.id;
             appendToOutput(operatorButton.textContent);
             current.shiftTo("operator");
