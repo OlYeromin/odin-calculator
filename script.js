@@ -108,7 +108,7 @@ function outputUp(parameter) {
 
 const keypad = document.querySelector("#keypad");
 keypad.addEventListener("click", (event) => {
-    console.log(event.target.className)
+    console.log("Keypad listener.")
     if (result.length) {
         console.log("Keypad listener is fired!")
         if (event.target.id != "keypad") {
@@ -122,7 +122,7 @@ keypad.addEventListener("click", (event) => {
             result = [];
         }
     }
-})
+}, true)
 
 const numeralButtons = document.querySelectorAll(".numeral");
 numeralButtons.forEach((numeralButton) => {
@@ -138,11 +138,6 @@ const operatorButtons = document.querySelectorAll(".operator");
 operatorButtons.forEach((operatorButton) => {
     operatorButton.addEventListener("click", (event) => {
         if (current.address == "second") {
-            event.stopPropagation();            // If this line is skipped, the keypad eventlistener fires
-                                                // and the result is pushed to the output immediately,
-                                                // without emptying the "result" array. In this case, after
-                                                // another click upon any button on the keypad the result 
-                                                // is pushed up again and the output looks like "2 + 2 = 4 = 4"
             result = evaluateExpression();
             createHistoryEntry();
             outputUp("expression");
@@ -179,7 +174,6 @@ allClear.addEventListener("click", () => {
 const evaluateButton = document.querySelector("#evaluate");
 evaluateButton.addEventListener("click", (event) => {
     if (secondNumber.length) {
-        event.stopPropagation();                // See the rationale in the operatorButton eventlistener
         result = evaluateExpression();
         createHistoryEntry();
         outputUp("expression");
