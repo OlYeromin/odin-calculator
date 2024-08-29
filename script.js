@@ -122,7 +122,12 @@ keypad.addEventListener("click", (event) => {
             result = [];
         }
     }
-}, true)
+}, true)            // The keypad listener is fired before the listeners below.
+                    // If not true, the result wouldn't be displayed in the output
+                    // but pushed right away to history, which is not intended here.
+                    // Plus, the order is important in case of numerals:
+                    // output should be cleared first and then a numeral selected,
+                    // not the other way round (it'd delete the selected numeral immediately this way).
 
 const numeralButtons = document.querySelectorAll(".numeral");
 numeralButtons.forEach((numeralButton) => {
