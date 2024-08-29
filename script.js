@@ -108,6 +108,8 @@ function outputUp(parameter) {
 
 const keypad = document.querySelector("#keypad");
 keypad.addEventListener("click", (event) => {
+    if (result.length)
+        console.log("Keypad listener")
     /*
     
     result to top
@@ -139,15 +141,17 @@ numeralButtons.forEach((numeralButton) => {
 
 const operatorButtons = document.querySelectorAll(".operator");
 operatorButtons.forEach((operatorButton) => {
-    operatorButton.addEventListener("click", () => {
+    operatorButton.addEventListener("click", (event) => {
+        console.log("Operator listener")
         if (current.address == "second") {
+            event.stopPropagation();
             result = evaluateExpression();
             createHistoryEntry();
             outputUp("expression");
             clearOutput();
             displayResult();
             firstNumber = result.slice();
-            result = [];
+            //result = [];
             operator[0] = operatorButton.id;
             appendToOutput(operatorButton.textContent);
             current.shiftTo("operator");
@@ -187,6 +191,7 @@ allClear.addEventListener("click", () => {
 const evaluateButton = document.querySelector("#evaluate");
 evaluateButton.addEventListener("click", (event) => {
     if (secondNumber.length) {
+        event.stopPropagation();
         result = evaluateExpression();
         createHistoryEntry();
         outputUp("expression");
