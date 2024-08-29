@@ -108,8 +108,9 @@ function outputUp(parameter) {
 
 const keypad = document.querySelector("#keypad");
 keypad.addEventListener("click", (event) => {
-    if (result.length)
-        console.log("Keypad listener")
+    if (result.length) {
+        
+    }
     /*
     
     result to top
@@ -142,7 +143,6 @@ numeralButtons.forEach((numeralButton) => {
 const operatorButtons = document.querySelectorAll(".operator");
 operatorButtons.forEach((operatorButton) => {
     operatorButton.addEventListener("click", (event) => {
-        console.log("Operator listener")
         if (current.address == "second") {
             event.stopPropagation();            // If this line is skipped, the keypad eventlistener fires
                                                 // and the result is pushed to the output immediately,
