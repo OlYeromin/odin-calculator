@@ -82,13 +82,13 @@ function changeSign() {
 }
 
 function appendToOutput(character) {
-    output.textContent += character;
+    current.span.textContent += character;
 }
 
 function deleteLastChar() {
-    string = output.textContent;
+    string = current.span.textContent;
     string = string.slice(0, string.length - 1);
-    output.textContent = string;
+    current.span.textContent = string;
 }
 
 function clearOutput() {
@@ -100,7 +100,7 @@ function clearOutput() {
 }
 
 function displayResult() {
-    output.textContent = result.join("");
+    current.span.textContent = result.join("");
 }
 
 function createHistoryEntry() {
