@@ -92,7 +92,9 @@ function deleteLastChar() {
 }
 
 function clearOutput() {
-    output.textContent = "";
+    firstSpan.textContent = "";
+    secondSpan.textContent = "";
+    operatorSpan.textContent = "";
     firstNumber = [];
     secondNumber = [];
     operator = [];
@@ -117,7 +119,7 @@ function outputUp(parameter) {
             currentDiv.textContent = outputContent;
             return;
         case "result":
-            currentDiv.textContent += `=${result.join("")}`;
+            currentDiv.textContent += `= ${result.join("")}`;
             return;
     }
 }
