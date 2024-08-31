@@ -184,8 +184,8 @@ operatorButtons.forEach((operatorButton) => {
 
 const backSpace = document.querySelector("#correct");
 backSpace.addEventListener("click", () => {
-    correctExpression(current);
     deleteLastChar();
+    correctExpression(current);
 })
 
 const allClear = document.querySelector("#all-clear");
