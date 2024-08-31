@@ -73,12 +73,9 @@ function correctExpression() {
         current.shiftTo("operator");
 }
 
-function changeSign() {
-    if (current.address == "operator") editedNum = firstNumber
-    else editedNum = current.reference;
-
-    if (editedNum[0] != "-") editedNum.unshift("-")
-    else editedNum.shift();
+function changeSign(number) {
+    if (number[0] != "-") number.unshift("-")
+    else number.shift();
 }
 
 
