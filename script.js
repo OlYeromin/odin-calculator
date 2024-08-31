@@ -3,6 +3,10 @@ let secondNumber = []; // i.e. you cannot change them unlike an array.
 let operator = [];
 let result = [];
 
+const firstSpan = document.querySelector("#first");
+const secondSpan = document.querySelector("#second");
+const operatorSpan = document.querySelector("#operator");
+
 // Using "current address" feature allows for a straightforward "correct" function
 let current = {
     address: "first",
