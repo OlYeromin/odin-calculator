@@ -7,17 +7,21 @@ let result = [];
 let current = {
     address: "first",
     reference: firstNumber,
+    span: firstSpan,
     shiftTo: function (newAddress) {
         this.address = newAddress;
         switch (newAddress) {
             case "first": 
                 this.reference = firstNumber;
+                this.span = firstSpan;
                 return;
             case "second":
                 this.reference = secondNumber;
+                this.span = secondSpan;
                 return;
             case "operator":
                 this.reference = operator;
+                this.span = operatorSpan;
                 return;
         }
     }
@@ -68,7 +72,7 @@ function correctExpression() {
 function changeSign() {
     if (current.address == "operator") editedNum = firstNumber
     else editedNum = current.reference;
-    
+
     if (editedNum[0] != "-") editedNum.unshift("-")
     else editedNum.shift();
 }
