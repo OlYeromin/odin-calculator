@@ -18,7 +18,7 @@ the expression is evaluated, its result displayed in the "Output" and the select
 4. "Evaluate" button evaluates the expression.
 5. "Correct" button deletes a numeral or operator.
 6. "All Clear" button clears the output. If the output is empty, the button clears the "Memory".
-7. "Plus-minus" turns the current number into a positive number and vice versa.
+7. "Plus-minus" turns the current positive number into a negative number and vice versa.
 8. "Memory" stores the evaluated expressions and their results. It stores a large, but finite number of expressions.
 10. The user cannot see all the expressions from the "Memory" immediately. To access the older ones, there is a scrollbar.
 11. User may press the buttons on the keypad, or he may press buttons on his keyboard. Only the numerals, math operators and "Backspace" are accepted. 
