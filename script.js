@@ -78,6 +78,12 @@ function changeSign(number) {
     else number.shift();
 }
 
+function prependSign(span) {
+    let newSpanText;
+    if (span.textContent[0] != "-") newSpanText = "-" + span.textContent
+    else newSpanText = span.textContent.slice(1);
+    span.textContent = newSpanText;
+}
 
 function appendToOutput(character) {
     current.span.textContent += character;
