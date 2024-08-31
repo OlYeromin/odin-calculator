@@ -108,9 +108,7 @@ function outputUp(parameter) {
 
 const keypad = document.querySelector("#keypad");
 keypad.addEventListener("click", (event) => {
-    console.log("Keypad listener.")
     if (result.length) {
-        console.log("Keypad listener is fired!")
         if (event.target.id != "keypad") {
             outputUp("result");
             if (event.target.className == "numeral") {
