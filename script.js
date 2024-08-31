@@ -119,7 +119,10 @@ keypad.addEventListener("click", (event) => {
             }
             else if (event.target.id != "all-clear")
                 firstNumber = result.slice();
-                current.reference = firstNumber;
+                current.reference = firstNumber;    // If this line is not present, current reference
+                                                    // is not set. I.e.: you see, "12" in the output,
+                                                    // then you press "1" and you see "121",
+                                                    // but the calculator thinks it is still 12.
             result = [];
         }
     }
