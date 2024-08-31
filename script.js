@@ -105,6 +105,10 @@ function clearOutput() {
     current.shiftTo("first");
 }
 
+function clearHistory() {
+    history.textContent = "";
+}
+
 function displayResult() {
     current.span.textContent = result.join("");
 }
