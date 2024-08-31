@@ -119,6 +119,7 @@ keypad.addEventListener("click", (event) => {
             }
             else if (event.target.id != "all-clear")
                 firstNumber = result.slice();
+                current.reference = firstNumber;
             result = [];
         }
     }
