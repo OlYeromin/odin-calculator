@@ -201,7 +201,8 @@ backSpace.addEventListener("click", () => {
 
 const allClear = document.querySelector("#all-clear");
 allClear.addEventListener("click", () => {
-   clearOutput(); 
+    if (firstSpan.textContent == "") clearHistory()
+    else clearOutput();
 })
 
 const evaluateButton = document.querySelector("#evaluate");
