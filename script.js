@@ -81,6 +81,7 @@ function changeSign() {
     else editedNum.shift();
 }
 
+
 function appendToOutput(character) {
     current.span.textContent += character;
 }
@@ -209,4 +210,20 @@ evaluateButton.addEventListener("click", () => {
         clearOutput();
         displayResult();
     }
+})
+
+const plusMinus = document.querySelector("#plus-minus");
+plusMinus.addEventListener("click", () => {
+    let editedNum;
+    let editedSpan;
+    if (current.address == "operator") {
+        editedNum = firstNumber;
+        editedSpan = firstSpan;
+    }
+    else {
+        editedNum = current.reference;
+        editedSpan = current.span;
+    }
+    changeSign(editedNum);
+    prependSign(editedSpan);
 })
