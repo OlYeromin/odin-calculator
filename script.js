@@ -168,7 +168,7 @@ function pressNumeral(event) {
     else 
         if (event.key = ",") numeral = "."
         else numeral = event.key;
-
+    if (numeral === "." && current.reference.includes(numeral)) return;
     if (current.address == "operator") current.shiftTo("second");
     appendNumeral(numeral, current.reference);
     appendToOutput(numeral);
