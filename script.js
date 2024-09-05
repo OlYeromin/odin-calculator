@@ -247,4 +247,5 @@ plusMinus.addEventListener("click", () => {
 
 document.addEventListener("keydown", function(event) {
     if (!isNaN(Number(event.key)) || [".", ","].includes(event.key)) pressNumeral(event)
+    else if (event.key == "Backspace") pressBackSpace();
 });
