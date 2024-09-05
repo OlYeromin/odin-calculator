@@ -245,6 +245,6 @@ plusMinus.addEventListener("click", () => {
     prependSign(editedSpan);
 })
 
-document.addEventListener("keypress", function(event) {
+document.addEventListener("keydown", function(event) {
     if (!isNaN(Number(event.key)) || [".", ","].includes(event.key)) pressNumeral(event)
 });
