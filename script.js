@@ -159,13 +159,15 @@ keypad.addEventListener("click", (event) => {
 
 const numeralButtons = document.querySelectorAll(".numeral");
 numeralButtons.forEach((numeralButton) => {
-    numeralButton.addEventListener("click", () => {
-        const numeral = numeralButton.textContent;
-        if (current.address == "operator") current.shiftTo("second");
-        appendNumeral(numeral, current.reference);
-        appendToOutput(numeral);
-    })
+    numeralButton.addEventListener("click", pressNumeral)
 })
+
+function pressNumeral(event) {
+    const num = event.currentTarget.textContent;
+    if (current.address == "operator") current.shiftTo("second");
+    appendNumeral(num, current.reference);
+    appendToOutput(num);
+}
 
 const operatorButtons = document.querySelectorAll(".operator");
 operatorButtons.forEach((operatorButton) => {
@@ -237,5 +239,6 @@ plusMinus.addEventListener("click", () => {
 })
 
 document.addEventListener("keypress", function(event) {
-    console.log(`${event.key}, it's ${typeof event.key}`);
+    if (!isNaN(Number(event.key)) || event.key === ".") console.log("Yes")
+        else console.log("No");
 });
