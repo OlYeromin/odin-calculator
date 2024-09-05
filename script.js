@@ -165,8 +165,8 @@ numeralButtons.forEach((numeralButton) => {
 function pressNumeral(event) {
     var numeral;
     if (event.type == "click") numeral = event.currentTarget.textContent
-    else 
-        if (event.key = ",") numeral = "."
+    else
+        if (event.key == ",") numeral = "."
         else numeral = event.key;
     if (numeral === "." && current.reference.includes(numeral)) return;
     if (current.address == "operator") current.shiftTo("second");
