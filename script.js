@@ -200,7 +200,9 @@ operatorButtons.forEach((operatorButton) => {
 })
 
 const backSpace = document.querySelector("#correct");
-backSpace.addEventListener("click", () => {
+backSpace.addEventListener("click", pressBackSpace)
+
+function pressBackSpace() {
     deleteLastChar();
     correctExpression(current);         // The order is important here.
                                         // E.g.: if you correct "12 +",
@@ -208,7 +210,7 @@ backSpace.addEventListener("click", () => {
                                         // and deletes the last char in first,
                                         // so you have "1 +", with firstNumber = [1, 2]
                                         // and empty operator.
-})
+}
 
 const allClear = document.querySelector("#all-clear");
 allClear.addEventListener("click", () => {
@@ -244,5 +246,5 @@ plusMinus.addEventListener("click", () => {
 })
 
 document.addEventListener("keypress", function(event) {
-    if (!isNaN(Number(event.key)) || [".", ","].includes(event.key)) pressNumeral(event);
+    if (!isNaN(Number(event.key)) || [".", ","].includes(event.key)) pressNumeral(event)
 });
