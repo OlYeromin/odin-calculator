@@ -198,7 +198,7 @@ backSpace.addEventListener("click", () => {
     correctExpression(current);         // The order is important here.
                                         // E.g.: if you correct "12 +",
                                         // it clears operator ARRAY, shifts to first,
-                                        // and and deletes the last char in first,
+                                        // and deletes the last char in first,
                                         // so you have "1 +", with firstNumber = [1, 2]
                                         // and empty operator.
 })
@@ -235,3 +235,7 @@ plusMinus.addEventListener("click", () => {
     changeSign(editedNum);
     prependSign(editedSpan);
 })
+
+document.addEventListener("keypress", function(event) {
+    console.log(`${event.key}, it's ${typeof event.key}`);
+});
