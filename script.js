@@ -163,10 +163,15 @@ numeralButtons.forEach((numeralButton) => {
 })
 
 function pressNumeral(event) {
-    const num = event.currentTarget.textContent;
+    var numeral;
+    if (event.type == "click") numeral = event.currentTarget.textContent
+    else 
+        if (event.key = ",") numeral = "."
+        else numeral = event.key;
+
     if (current.address == "operator") current.shiftTo("second");
-    appendNumeral(num, current.reference);
-    appendToOutput(num);
+    appendNumeral(numeral, current.reference);
+    appendToOutput(numeral);
 }
 
 const operatorButtons = document.querySelectorAll(".operator");
@@ -239,6 +244,5 @@ plusMinus.addEventListener("click", () => {
 })
 
 document.addEventListener("keypress", function(event) {
-    if (!isNaN(Number(event.key)) || event.key === ".") console.log("Yes")
-        else console.log("No");
+    if (!isNaN(Number(event.key)) || [".", ","].includes(event.key)) pressNumeral(event);
 });
