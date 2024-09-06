@@ -174,30 +174,43 @@ function pressNumeral(event) {
     appendToOutput(numeral);
 }
 
+function pressOperator(event) {
+    var operatorType;
+    var operatorSign;
+    if (event.type == "click") {
+        operatorType = event.currentTarget.id;
+        operatorSign = event.currentTarget.textContent;
+    }
+    else {
+        operatorType = event.code.slice(6).toLowerCase()
+        operatorSign = event.key;
+    }
+
+    if (current.address == "second") {
+        result = evaluateExpression();
+        createHistoryEntry();
+        outputUp("expression");
+        clearOutput();
+        displayResult();
+        operator[0] = operatorType;
+        appendToOutput(operatorSign);
+        current.shiftTo("operator");
+        return;
+    };
+
+    if (current.address == "operator") deleteLastChar();
+
+    if (current.address == "first") {
+        if (!firstNumber.length) return;        // if the first number is empty
+        current.shiftTo("operator")};
+    operator[0] = operatorType;
+    appendToOutput(operatorSign);
+}
+
 const operatorButtons = document.querySelectorAll(".operator");
-operatorButtons.forEach((operatorButton) => {
-    operatorButton.addEventListener("click", () => {
-        if (current.address == "second") {
-            result = evaluateExpression();
-            createHistoryEntry();
-            outputUp("expression");
-            clearOutput();
-            displayResult();
-            operator[0] = operatorButton.id;
-            appendToOutput(operatorButton.textContent);
-            current.shiftTo("operator");
-            return;
-        };
-
-        if (current.address == "operator") deleteLastChar();
-
-        if (current.address == "first") {
-            if (!firstNumber.length) return;        // if the first number is empty
-            current.shiftTo("operator")};
-        operator[0] = operatorButton.id;
-        appendToOutput(operatorButton.textContent);
-    })
-})
+operatorButtons.forEach((operatorButton) => 
+    operatorButton.addEventListener("click", pressOperator)
+)
 
 const backSpace = document.querySelector("#correct");
 backSpace.addEventListener("click", pressBackSpace)
@@ -248,8 +261,8 @@ plusMinus.addEventListener("click", () => {
 })
 
 document.addEventListener("keydown", function(event) {
-    if (["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", ".", ","]
+    /*if (["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", ".", ","]
         .includes(event.key)) pressNumeral(event)
     else if (event.key == "Backspace") pressBackSpace()
-    else if (event.key == "Enter") pressEvaluate()
+    else if (event.key == "Enter") pressEvaluate()*/
 });
