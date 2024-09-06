@@ -86,6 +86,9 @@ function prependSign(span) {
 }
 
 function appendToOutput(character) {
+    if (current.span.textContent == "" && character == ".") {
+        current.span.textContent += "0";
+    }
     current.span.textContent += character;
 }
 
