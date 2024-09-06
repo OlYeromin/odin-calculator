@@ -219,7 +219,9 @@ allClear.addEventListener("click", () => {
 })
 
 const evaluateButton = document.querySelector("#evaluate");
-evaluateButton.addEventListener("click", () => {
+evaluateButton.addEventListener("click", pressEvaluate);
+
+function pressEvaluate() {
     if (secondNumber.length) {
         result = evaluateExpression();
         createHistoryEntry();
@@ -227,7 +229,7 @@ evaluateButton.addEventListener("click", () => {
         clearOutput();
         displayResult();
     }
-})
+}
 
 const plusMinus = document.querySelector("#plus-minus");
 plusMinus.addEventListener("click", () => {
@@ -248,5 +250,6 @@ plusMinus.addEventListener("click", () => {
 document.addEventListener("keydown", function(event) {
     if (["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", ".", ","]
         .includes(event.key)) pressNumeral(event)
-    else if (event.key == "Backspace") pressBackSpace();
+    else if (event.key == "Backspace") pressBackSpace()
+    else if (event.key == "Enter") pressEvaluate()
 });
