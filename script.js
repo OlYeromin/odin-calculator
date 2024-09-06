@@ -205,7 +205,9 @@ function pressOperator(event) {
 
     if (current.address == "first") {
         if (!firstNumber.length) return;        // if the first number is empty
-        current.shiftTo("operator")};
+        if (current.reference.at(-1) == ".") deleteLastChar();
+        current.shiftTo("operator")
+    };
     operator[0] = operatorType;
     appendToOutput(operatorSign);
 }
@@ -238,6 +240,7 @@ const evaluateButton = document.querySelector("#evaluate");
 evaluateButton.addEventListener("click", pressEvaluate);
 
 function pressEvaluate() {
+    if (current.reference.at(-1) == ".") deleteLastChar();
     if (numeralsToNumber(secondNumber) == 0) {
         alert("Cannot divide by zero!");
         clearOutput();
