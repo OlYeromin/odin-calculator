@@ -261,8 +261,9 @@ plusMinus.addEventListener("click", () => {
 })
 
 document.addEventListener("keydown", function(event) {
-    /*if (["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", ".", ","]
+    if (["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", ".", ","]
         .includes(event.key)) pressNumeral(event)
+    else if (["+","-","*","/"].includes(event.key))  pressOperator(event);
     else if (event.key == "Backspace") pressBackSpace()
-    else if (event.key == "Enter") pressEvaluate()*/
+    else if (event.key == "Enter") pressEvaluate();
 });
