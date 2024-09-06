@@ -235,6 +235,11 @@ const evaluateButton = document.querySelector("#evaluate");
 evaluateButton.addEventListener("click", pressEvaluate);
 
 function pressEvaluate() {
+    if (numeralsToNumber(secondNumber) == 0) {
+        alert("Cannot divide by zero!");
+        clearOutput();
+        return;
+    }
     if (secondNumber.length) {
         result = evaluateExpression();
         createHistoryEntry();
