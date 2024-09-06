@@ -241,12 +241,12 @@ evaluateButton.addEventListener("click", pressEvaluate);
 
 function pressEvaluate() {
     if (current.reference.at(-1) == ".") deleteLastChar();
-    if (numeralsToNumber(secondNumber) == 0) {
-        alert("Cannot divide by zero!");
-        clearOutput();
-        return;
-    }
     if (secondNumber.length) {
+        if (numeralsToNumber(secondNumber) == 0) {
+            alert("Cannot divide by zero!");
+            clearOutput();
+            return;
+        }
         result = evaluateExpression();
         createHistoryEntry();
         outputUp("expression");
