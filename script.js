@@ -261,9 +261,25 @@ plusMinus.addEventListener("click", () => {
 })
 
 document.addEventListener("keydown", function(event) {
+    var isNumeralKey = false;
     if (["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", ".", ","]
-        .includes(event.key)) pressNumeral(event)
-    else if (["+","-","*","/"].includes(event.key))  pressOperator(event);
+        .includes(event.key)) isNumeralKey = true;
+
+    if (result.length)
+    {
+        outputUp("result");
+            if (isNumeralKey) {
+                if (current.address == "first") clearOutput();
+                else firstNumber = result.slice();
+            }
+            else 
+                firstNumber = result.slice();
+                current.shiftTo("first");           
+            result = [];
+    }
+    
+    if (isNumeralKey) pressNumeral(event)
+    else if (["+","-","*","/"].includes(event.key)) pressOperator(event);
     else if (event.key == "Backspace") pressBackSpace()
     else if (event.key == "Enter") pressEvaluate();
 });
