@@ -186,8 +186,26 @@ function pressOperator(event) {
         operatorSign = event.currentTarget.textContent;
     }
     else {
-        operatorType = event.code.slice(6).toLowerCase()
         operatorSign = event.key;
+        if (event.code.slice(0, 6) == "Numpad")
+            operatorType = event.code.slice(6).toLowerCase()
+        else {
+            switch(event.code) {
+                case "Minus": {
+                    operatorType =  "subtract";
+                    break;
+                }
+                case "Plus": {
+                    operatorType =  "add";
+                    break;
+                }
+                case "Slash": 
+                case "Semicolon": {
+                    operatorType =  "divide";
+                    break;
+                }
+            }
+        }
     }
 
     if (current.address == "second") {
