@@ -240,8 +240,8 @@ const evaluateButton = document.querySelector("#evaluate");
 evaluateButton.addEventListener("click", pressEvaluate);
 
 function pressEvaluate() {
-    if (current.reference.at(-1) == ".") deleteLastChar();
     if (secondNumber.length) {
+        if (current.reference.at(-1) == ".") deleteLastChar();
         if (numeralsToNumber(secondNumber) == 0) {
             alert("Cannot divide by zero!");
             clearOutput();
