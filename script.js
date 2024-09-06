@@ -146,7 +146,8 @@ keypad.addEventListener("click", (event) => {
             }
             else if (event.target.id != "all-clear")
                 firstNumber = result.slice();
-                current.shiftTo("first");           // If this line is not present, current reference
+                if (event.target.className != "operator")
+                    current.shiftTo("first");       // If this line is not present, current reference
                                                     // is not set. I.e.: you see, "12" in the output,
                                                     // then you press "1" and you see "121",
                                                     // but the calculator thinks it is still 12.
@@ -196,8 +197,8 @@ function pressOperator(event) {
         clearOutput();
         displayResult();
         operator[0] = operatorType;
-        appendToOutput(operatorSign);
         current.shiftTo("operator");
+        appendToOutput(operatorSign);
         return;
     };
 
@@ -272,25 +273,27 @@ plusMinus.addEventListener("click", () => {
 })
 
 document.addEventListener("keydown", function(event) {
-    var isNumeralKey = false;
+    var keyType = "other";
     if (["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", ".", ","]
-        .includes(event.key)) isNumeralKey = true;
+        .includes(event.key)) keyType = "numeral"
+    else if (["+","-","*","/"]
+        .includes(event.key)) keyType = "operator";
 
     if (result.length)
     {
         outputUp("result");
-            if (isNumeralKey) {
+            if (keyType == "numeral") {
                 if (current.address == "first") clearOutput();
                 else firstNumber = result.slice();
             }
             else 
                 firstNumber = result.slice();
-                current.shiftTo("first");           
+                if (keyType == "other") current.shiftTo("first");           
             result = [];
     }
     
-    if (isNumeralKey) pressNumeral(event)
-    else if (["+","-","*","/"].includes(event.key)) pressOperator(event);
+    if (keyType == "numeral") pressNumeral(event)
+    else if (keyType == "operator") pressOperator(event);
     else if (event.key == "Backspace") pressBackSpace()
     else if (event.key == "Enter") pressEvaluate();
 });
