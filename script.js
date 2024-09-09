@@ -7,6 +7,9 @@ const firstSpan = document.querySelector("#first");
 const secondSpan = document.querySelector("#second");
 const operatorSpan = document.querySelector("#operator");
 
+const output = document.querySelector("#output");
+const history = document.querySelector("#history")
+
 // Using "current address" feature allows for a straightforward "correct" function
 let current = {
     address: "first",
@@ -30,9 +33,6 @@ let current = {
         }
     }
 }
-
-const output = document.querySelector("#output");
-const history = document.querySelector("#history")
 
 function appendNumeral(numeralAppended, number) {
     if (numeralAppended === "0" && !number.length) return;
@@ -203,6 +203,11 @@ function pressNumeral(event) {
     appendToOutput(numeral);
 }
 
+const operatorButtons = document.querySelectorAll(".operator");
+operatorButtons.forEach((operatorButton) => 
+    operatorButton.addEventListener("click", pressOperator)
+)
+
 function pressOperator(event) {
     var operatorType;
     var operatorSign;
@@ -256,10 +261,24 @@ function pressOperator(event) {
     appendToOutput(operatorSign);
 }
 
-const operatorButtons = document.querySelectorAll(".operator");
-operatorButtons.forEach((operatorButton) => 
-    operatorButton.addEventListener("click", pressOperator)
-)
+const evaluateButton = document.querySelector("#evaluate");
+evaluateButton.addEventListener("click", pressEvaluate);
+
+function pressEvaluate() {
+    if (secondNumber.length) {
+        if (current.reference.at(-1) == ".") deleteLastChar();
+        if (numeralsToNumber(secondNumber) == 0) {
+            alert("Cannot divide by zero!");
+            clearOutput();
+            return;
+        }
+        result = evaluateExpression();
+        createHistoryEntry();
+        outputUp("expression");
+        clearOutput();
+        displayResult();
+    }
+}
 
 const backSpace = document.querySelector("#correct");
 backSpace.addEventListener("click", pressBackSpace)
@@ -279,25 +298,6 @@ allClear.addEventListener("click", () => {
     if (firstSpan.textContent == "") clearHistory()
     else clearOutput();
 })
-
-const evaluateButton = document.querySelector("#evaluate");
-evaluateButton.addEventListener("click", pressEvaluate);
-
-function pressEvaluate() {
-    if (secondNumber.length) {
-        if (current.reference.at(-1) == ".") deleteLastChar();
-        if (numeralsToNumber(secondNumber) == 0) {
-            alert("Cannot divide by zero!");
-            clearOutput();
-            return;
-        }
-        result = evaluateExpression();
-        createHistoryEntry();
-        outputUp("expression");
-        clearOutput();
-        displayResult();
-    }
-}
 
 const plusMinus = document.querySelector("#plus-minus");
 plusMinus.addEventListener("click", () => {
