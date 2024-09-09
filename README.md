@@ -8,7 +8,7 @@ The calculator shall consist of a keypad and a display.
 1. The keypad contains numerals, basic math operations (+, -, *, /), and "Evaluate", "Correct", "All Clear" and "Plus-minus" buttons.
 2. The display is divided into two parts: a smaller "Output" and a larger "Memory".
 3. In the "Output" the current operation (like "12 + 2") and results are displayed.
-4. In the "Memory" the history of previous operations and their results are displayed.
+4. In the "Memory" the history of previous operations and their results is displayed.
 
 The calculator must opearte in the following manner:
 1. If a numeral or math operator is pressed, it is displayed in the "Output".
