@@ -71,8 +71,10 @@ function correctExpression() {
     if (current.address == "operator") current.shiftTo("first");
     if (current.address == "second" && !secondNumber.length)
         current.shiftTo("operator")
-    if (current.reference.length == 1 && current.reference[0] == "-") 
+    if (current.reference.length == 1 && current.reference[0] == "-") {
+        if (current.address == "second") deleteBrackets();
         correctExpression();
+    }
 }
 
 function changeSign(number) {
@@ -82,9 +84,29 @@ function changeSign(number) {
 
 function prependSign(span) {
     let newSpanText;
-    if (span.textContent[0] != "-") newSpanText = "-" + span.textContent
-    else newSpanText = span.textContent.slice(1);
+    if (span.textContent[0] != "-") {
+        newSpanText = "-" + span.textContent;
+        if (current.address == "second") encloseInBrackets();
+    }
+    else {
+        newSpanText = span.textContent.slice(1)
+        if (current.address == "second") deleteBrackets();
+    };
     span.textContent = newSpanText;
+}
+
+function encloseInBrackets() {
+    const leftBracket = document.querySelector("#left-bracket");
+    const rightBracket = document.querySelector("#right-bracket")
+    leftBracket.textContent = "(";
+    rightBracket.textContent = ")";
+}
+
+function deleteBrackets() {
+    const leftBracket = document.querySelector("#left-bracket");
+    const rightBracket = document.querySelector("#right-bracket")
+    leftBracket.textContent = "";
+    rightBracket.textContent = "";
 }
 
 function appendToOutput(character) {
