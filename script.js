@@ -69,8 +69,10 @@ function evaluateExpression() {
 function correctExpression() {
     current.reference.pop();
     if (current.address == "operator") current.shiftTo("first");
-    if (current.address == "second" && !secondNumber.length) 
-        current.shiftTo("operator");
+    if (current.address == "second" && !secondNumber.length)
+        current.shiftTo("operator")
+    if (current.reference.length == 1 && current.reference[0] == "-") 
+        correctExpression();
 }
 
 function changeSign(number) {
@@ -96,6 +98,7 @@ function deleteLastChar() {
     string = current.span.textContent;
     string = string.slice(0, string.length - 1);
     current.span.textContent = string;
+    if (current.span.textContent == "-") deleteLastChar();
 }
 
 function clearOutput() {
