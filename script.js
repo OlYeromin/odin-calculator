@@ -340,5 +340,6 @@ document.addEventListener("keydown", function(event) {
     else if (keyType == "operator") pressOperator(event);
     else if (event.key == "Backspace") pressBackSpace()
     else if (event.key == "Enter") pressEvaluate();
-    event.target.blur();
+    event.target.blur();            // If not blurred, after you click a button
+                                      // and then press enter, the button is clicked again.
 });
