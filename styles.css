@@ -50,9 +50,32 @@ body {
 
 #keypad button {
     flex-basis: 25%;
-
+    font-size: larger;
+    border-radius: 5px;
+    border: solid gray 1px;
+    box-shadow: 1px 1px 1px;
 }
+
+button:hover {
+    filter: brightness(90%)
+}
+
+#keypad .misc {
+    background-color: rgb(182, 182, 182);
+    font-weight: bold;
+} 
+
+#keypad .numeral,
+#keypad #plus-minus {
+    background-color: rgb(218, 218, 218);
+} 
 
 #keypad #evaluate {
     flex-basis: 50%;
+    background-color: rgb(255, 191, 80);
 }
+
+#keypad .operator {
+    background-color: rgb(255, 191, 80);
+    font-weight: bold;
+} 
