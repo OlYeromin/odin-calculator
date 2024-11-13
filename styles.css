@@ -15,6 +15,8 @@ body {
     width: 200px;
     height: 400px;
     align-self: center;
+    border-radius: 10px;
+    border: black 2px solid;
 }
 
 #display {
