@@ -12,7 +12,7 @@ body {
 #calculator {
     display: flex;
     flex-direction: column; 
-    width: 200px;
+    width: 250px;
     height: 400px;
     align-self: center;
     border-radius: 10px;
@@ -46,10 +46,11 @@ body {
     height: 200px;
     display: flex;
     flex-wrap: wrap;
+    gap: 5px;
 }
 
 #keypad button {
-    flex-basis: 25%;
+    flex-basis: 23.5%;
     font-size: larger;
     border-radius: 5px;
     border: solid gray 1px;
@@ -71,7 +72,7 @@ button:hover {
 } 
 
 #keypad #evaluate {
-    flex-basis: 50%;
+    flex-basis: 49%;
     background-color: rgb(255, 191, 80);
 }
 
