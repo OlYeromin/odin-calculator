@@ -57,8 +57,13 @@ body {
     box-shadow: 1px 1px 1px;
 }
 
-button:hover {
+#keypad button:hover {
     filter: brightness(90%)
+}
+
+
+#keypad button:active {
+    box-shadow: none;
 }
 
 #keypad .misc {
@@ -79,4 +84,4 @@ button:hover {
 #keypad .operator {
     background-color: rgb(255, 191, 80);
     font-weight: bold;
-} 
+}
