@@ -23,11 +23,15 @@ body {
     left: 5px;
     width: 250px;
     height: 400px;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 #display {
     border: black 2px solid;
-    height: 200px;
+    height: 190px;
     display: flex;
     flex-direction: column;
     font-family: Arial, Helvetica, sans-serif;
