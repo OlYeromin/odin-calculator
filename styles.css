@@ -10,13 +10,19 @@ body {
 }
 
 #calculator {
-    display: flex;
-    flex-direction: column; 
-    width: 250px;
-    height: 400px;
+    width: 260px;
+    height: 420px;
     align-self: center;
     border-radius: 10px;
     border: black 2px solid;
+}
+
+#calculator > div {
+    position: relative;
+    top: 10px;
+    left: 5px;
+    width: 250px;
+    height: 400px;
 }
 
 #display {
