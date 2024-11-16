@@ -43,10 +43,19 @@ body {
 }
 
 #history {
+    padding: 0px 5px;
     flex-basis: 80%;
     display: flex;
     flex-direction: column;
     overflow-y: auto;
+    font-weight: normal;
+}
+
+#output {
+    padding: 10px;
+    display: flex;
+    justify-content: end;
+    font-size: xx-large;
     font-weight: normal;
 }
 
