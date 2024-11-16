@@ -144,7 +144,6 @@ function displayResult() {
 function createHistoryEntry() {
     const newdiv = document.createElement("div");
     history.appendChild(newdiv);
-    newdiv.scrollIntoView();
 }
 
 function outputUp(parameter) {
@@ -153,9 +152,11 @@ function outputUp(parameter) {
     switch (parameter) {
         case "expression": 
             currentDiv.textContent = outputContent;
+            currentDiv.scrollIntoView();
             return;
         case "result":
             currentDiv.textContent += `= ${result.join("")}`;
+            currentDiv.scrollIntoView();
             return;
     }
 }
