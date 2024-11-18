@@ -62,9 +62,12 @@ function evaluateExpression() {
         case "multiply":
             return (num1 * num2).toString().split("");
         case "divide":
-            return (num1 / num2).toString().split("");
+            let quotient = num1 / num2;
+            if (quotient.toString().length >= 11 )
+                quotient = quotient.toFixed(11);
+            return quotient.toString().split("");
+            }
     }
-}
 
 function correctExpression() {
     current.reference.pop();
