@@ -219,19 +219,54 @@ function pressOperator(event) {
     else {
         operatorSign = event.key;
         if (event.code.slice(0, 6) == "Numpad")
-            operatorType = event.code.slice(6).toLowerCase()
+            operatorType = event.code.slice(6).toLowerCase();
+            switch(operatorType) {
+                case "subtract": {
+                    operatorSign = "−";
+                    break;
+                }
+                case "multiply": {
+                    operatorSign = "×";
+                    break;
+                }
+                case "divide": {
+                    operatorSign = "÷";
+                    break;
+                }
+            }
+        if (event.code.slice(0, 6) == "Numpad")
+            switch(event.code) {
+                case "minus": {
+                    operatorSign = "−";
+                    break;
+                }
+                case "plus": {
+                    operatorSign = "+";
+                    break;
+                }
+                case "multiply": 
+                    operatorSign = "×";
+                    break;
+                case "divide": {
+                    operatorSign = "÷";
+                    break;
+                }
+            }
         else {
             switch(event.code) {
                 case "Minus": {
+                    operatorSign = "−"
                     operatorType =  "subtract";
                     break;
                 }
                 case "Plus": {
+                    operatorSign = "+"
                     operatorType =  "add";
                     break;
                 }
                 case "Slash": 
                 case "Semicolon": {
+                    operatorSign = "÷"
                     operatorType =  "divide";
                     break;
                 }
